@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    height: auto;
+}
+
+#mineSweeper{
+    width: 600px;
+    height: auto;
+    margin: 25px auto;
+    background: linear-gradient(pink,skyblue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header{
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#timer{
+     width: 50%; 
+    background-color: green;
+}
+
+#difficulty-Level{
+     width: 50%;
+    height: auto; 
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 25px;
+    background-color: goldenrod;
+    color: whitesmoke;
+}
+
+#mineSweeperBoard{
+    width: 540px;
+    height: 540px;
+    background-color: rgb(83, 233, 83);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+

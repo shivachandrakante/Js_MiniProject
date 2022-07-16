@@ -4,14 +4,28 @@
     <head>
         <meta charset="UTF-8">
         <!--- Document Title -->
-        <title>Shiva | Portfolio</title>
+        <title>Mine Sweeper</title>
         <!--- Linking CSS File -->
         <link rel = "stylesheet" href = "style.css" />
         <meta name = "author" content = "Shiva Chandra" />
-        <meta name = "description" content = "Portfolio of Shiva" />
+        <meta name = "description" content = "Mine Sweeper made by Shiva with love" />
     </head>
     <!--- Body Tag -->
     <body>
-
+        <div id="mineSweeper">
+            <div id="header">
+                <select id="difficulty-Level" name="difficultyLevel" >
+                    <option value="Easy" selected>Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+                <div id="timer">
+                    Timer
+                </div>
+            </div>
+            <div id="mineSweeperBoard">
+            </div>
+        </div>
+        <script src="index.js"></script>
     </body>
 </html>
