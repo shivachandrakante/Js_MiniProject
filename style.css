@@ -46,3 +46,6 @@ body{
     align-items: center;
 }
 
+#mineSweeperBoard .checked{
+    background-color: blue;
+}
