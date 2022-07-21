@@ -1,21 +1,48 @@
 
 
-document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load',function(){
         this.setTimeout(function open(event){
-            document.querySelector('.popup').style.display = "block";
+            document.querySelector('.startPopUp').style.display = "block";
         },1000)
     })
+    
     const startGame = document.getElementById("startGame")
+    const timer = document.getElementById("timer")
     const difficultyLevelOnPopup = document.getElementById("difficulty-Level-on-popup")
     const difficultyLevel = document.getElementById("difficulty-Level")
     const mineSweeperBoard = document.getElementById("mineSweeperBoard")
+    const outPutMessage = document.getElementById("outPutMessage")
+    const playAgain = document.getElementById("playAgain")
     let gridboard = []
     let isGameOver = false;
     let gameLevel;
     let flags;
+    let isWon = false;
+    let timeTaken = 0;
+    let gameoverAt;
+    async function incrementSeconds(){
+        timeTaken += 1
+        let min = 0;
+        let sec = 0;
+        if(isGameOver){
+            return;
+        }
+        if(timeTaken>=60){
+            min = Number(timeTaken/60).toFixed(0)
+        }
+        sec = timeTaken - min*60
+        if(min<=9){
+            min = '0' + min
+        }
+        if(sec<=9){
+            sec = '0' + sec
+        }
+        timer.innerHTML = ` ${min} : ${sec}`
+    }
     startGame.addEventListener('click',function() {
-        document.querySelector('.popup').style.display = "none";
+        setInterval(incrementSeconds, 1000);
+        document.querySelector('.startPopUp').style.display = "none";
         document.getElementById("mineSweeper").style.display = "flex";
         difficultyLevel.value = difficultyLevelOnPopup.value;
         console.log(difficultyLevelOnPopup.value)
@@ -34,7 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
     })
-
+    playAgain.addEventListener('click',function(){
+        window.setTimeout(() => {
+            window.location.reload(true);
+        }, 200);
+    })
     difficultyLevel.addEventListener('change',function() {
         console.log(difficultyLevel.value)
         if(difficultyLevel.value === "Easy"){
@@ -80,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
             singleBlock.classList.add(gridArrray[i])
             singleBlock.style.width = `${size}px` 
             singleBlock.style.height = `${size}px` 
-            /*if(gridArrray[i]  === "bomb" ){
+            if(gridArrray[i]  === "bomb" ){
                 singleBlock.style.backgroundColor = "orange";
-            } */
+            } 
             mineSweeperBoard.appendChild(singleBlock);
             gridboard.push(singleBlock);
             singleBlock.addEventListener('click',function (){
@@ -208,12 +239,20 @@ document.addEventListener('DOMContentLoaded', () => {
     function gameOver(squareClicked){
         console.log("Game Over")
         isGameOver = true;
-
+        isWon = false;
+        gameoverAt = timer.innerHTML;
         gridboard.forEach(eachblock =>{
             if(eachblock.classList.contains("bomb")){
-                 eachblock.innerHTML = "💣";
+                eachblock.innerHTML = "💣"
+                // setInterval(() =>{
+                //     eachblock.innerHTML = "💣"
+                // },1000);
             }
         });
+        setTimeout(() =>{
+            endGame()
+        }, 3000);
+        
     }
     function checkForWin(){
         let countBombs = 0;
@@ -225,7 +264,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if(countBombs === ((gameLevel*gameLevel) * 0.2)) {
                 console.log("YOU WON");
                 isGameOver = true;
+                isWon = true;
+                gameoverAt = timer.innerHTML;
+                setTimeout(() =>{
+                    endGame()
+                }, 3000);
             }
         }
     }
-})
+    function endGame(){
+        document.getElementById("mineSweeper").style.display = "none";
+        document.querySelector('.closePopUp').style.display = "block";
+        if(isWon){
+            outPutMessage.innerHTML = `Hurray, You Won :-) 
+                                    You Took ${gameoverAt}`;
+        } else{
+            outPutMessage.innerHTML = `, Better luck next Time 🤞 
+                                        You Took ${gameoverAt}`;
+        }
+    }
+ })

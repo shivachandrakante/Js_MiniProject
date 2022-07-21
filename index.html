@@ -12,7 +12,7 @@
     </head>
     <!--- Body Tag -->
     <body>
-        <div class="popup">
+        <div class="startPopUp popup">
             <h3>Hi! Welcome to mineSweeper game. Built by Shiva Chandra with ♥</h3>
             <select id="difficulty-Level-on-popup" name="difficultyLevel" >
                 <option value="Easy" selected>Easy</option>
@@ -34,6 +34,10 @@
             </div>
             <div id="mineSweeperBoard">
             </div>
+        </div>
+        <div class="closePopUp popup">
+            <h3  id="outPutMessage"></h3>
+            <button id="playAgain">Play Again</button>
         </div>
         <script src="index.js"></script>
     </body>
