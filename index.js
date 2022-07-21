@@ -1,10 +1,40 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load',function(){
+        this.setTimeout(function open(event){
+            document.querySelector('.popup').style.display = "block";
+        },1000)
+    })
+    const startGame = document.getElementById("startGame")
+    const difficultyLevelOnPopup = document.getElementById("difficulty-Level-on-popup")
     const difficultyLevel = document.getElementById("difficulty-Level")
     const mineSweeperBoard = document.getElementById("mineSweeperBoard")
     let gridboard = []
     let isGameOver = false;
     let gameLevel;
     let flags;
+    startGame.addEventListener('click',function() {
+        document.querySelector('.popup').style.display = "none";
+        document.getElementById("mineSweeper").style.display = "flex";
+        difficultyLevel.value = difficultyLevelOnPopup.value;
+        console.log(difficultyLevelOnPopup.value)
+        if(difficultyLevelOnPopup.value === "Easy"){
+            flags = 0
+            gameLevel = 10
+            formBoard(10)
+        } else if(difficultyLevelOnPopup.value === "Medium" ){
+            flags = 0
+            gameLevel = 15
+            formBoard(15)
+        } else{
+            flags = 0
+            gameLevel = 20
+            formBoard(20)
+        }
+        
+    })
+
     difficultyLevel.addEventListener('change',function() {
         console.log(difficultyLevel.value)
         if(difficultyLevel.value === "Easy"){
@@ -50,9 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
             singleBlock.classList.add(gridArrray[i])
             singleBlock.style.width = `${size}px` 
             singleBlock.style.height = `${size}px` 
-            if(gridArrray[i]  === "bomb" ){
+            /*if(gridArrray[i]  === "bomb" ){
                 singleBlock.style.backgroundColor = "orange";
-            } 
+            } */
             mineSweeperBoard.appendChild(singleBlock);
             gridboard.push(singleBlock);
             singleBlock.addEventListener('click',function (){
@@ -87,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(!isRightColumn && !isBottomRow && gridboard[i+level+1].classList.contains('bomb')) totalBombsAdjacentToI++;
 
                 gridboard[i].setAttribute('data',totalBombsAdjacentToI); 
-                console.log(gridboard[i])
+                //console.log(gridboard[i])
             }
         }
     }
@@ -181,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gridboard.forEach(eachblock =>{
             if(eachblock.classList.contains("bomb")){
-                eachblock.innerHTML = "💣"
+                 eachblock.innerHTML = "💣";
             }
         });
     }
