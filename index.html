@@ -7,6 +7,7 @@
         <title>Mine Sweeper</title>
         <!--- Linking CSS File -->
         <link rel = "stylesheet" href = "style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <meta name = "author" content = "Shiva Chandra" />
         <meta name = "description" content = "Mine Sweeper made by Shiva with love" />
     </head>
@@ -21,19 +22,37 @@
             </select>
             <button id="startGame"> Start Game</button>
         </div>
-        <div id="mineSweeper">
-            <div id="header">
-                <select id="difficulty-Level" name="difficultyLevel" >
-                    <option value="Easy" selected>Easy</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Hard">Hard</option>
-                </select>
-                <div id="timer">
-                    Timer
+        <botton id="helpicon-toggle">
+            <span class="material-symbols-outlined">help</span>
+        </botton>
+        <div id="wrapper" >
+            <div id="mineSweeper">
+                <div id="header">
+                    <select id="difficulty-Level" name="difficultyLevel" >
+                        <option value="Easy" selected>Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                    <div id="timer">
+                        Timer
+                    </div>
+                </div>
+                <div id="mineSweeperBoard">
                 </div>
             </div>
-            <div id="mineSweeperBoard">
-            </div>
+        </div>
+        <div id="help-info">
+            <ul>
+                <li>Easy - A grid of 100 blocks with 20 mines.</li> 
+                <li>Medium - A grid of 225 block with 45 mines.</li> 
+                <li>Hard - A grid of 400 block with 80 mines.</li> 
+                <li>Right Click to mark a Square as a Flag 🚩, click again to unmark the Square</li>
+                <li>Any number on the board refers to the number of mines currently touching that number's square.</li>
+                <li>To win a round of Minesweeper, you must flag all the squares that has a mine under it. Once you've done so, the game will be over.</li>
+            </ul>   
+            <button id="help-info-close-icon">
+                <span class="material-symbols-outlined">close</span>
+            </button>            
         </div>
         <div class="closePopUp popup">
             <h3  id="outPutMessage"></h3>

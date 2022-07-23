@@ -10,7 +10,6 @@ body{
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 100%;
-    height: auto;
     background-color: #caf0f8;
 }
 
@@ -44,14 +43,65 @@ body{
     color: whitesmoke;
 }
 
+#wrapper{
+    display: none;
+    /* flex-direction: column;
+    justify-content: center; */
+}
+#helpicon-toggle{
+    height: 40px;
+    width: 40px;
+    display: none;
+    position: fixed;
+    place-items: center;
+    background-color: #e9c46a;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    outline: none;
+    top: 10%;
+    right: 0%;
+    
+}
+#helpicon-toggle:hover{
+    background-color: #8a660b;
+}
+#help-info{
+    display: none;
+    padding: 20px;
+    width: 600px;
+    padding: 30px 40px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f9844a;
+    font-weight: normal;
+    flex-direction: row;
+
+    font-size: 20px;
+}
+ul {
+    list-style-position: outside;
+  }
+#help-info-close-icon{
+    background-color: inherit;
+    align-self: flex-start;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+}
 #mineSweeper{
     width: 600px;
     height: auto;
-    margin: 25px auto;
+    margin: 20px auto;
     background: #023e8a;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
 }
 
 #header{

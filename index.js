@@ -21,15 +21,16 @@
     let isWon = false;
     let timeTaken = 0;
     let gameoverAt;
+    let isGamePause = false;
     async function incrementSeconds(){
+        if(isGameOver || isGamePause){
+            return;
+        }
         timeTaken += 1
         let min = 0;
         let sec = 0;
-        if(isGameOver){
-            return;
-        }
         if(timeTaken>=60){
-            min = Number(timeTaken/60).toFixed(0)
+            min = Number(Math.floor(timeTaken/60)).toFixed(0)
         }
         sec = timeTaken - min*60
         if(min<=9){
@@ -38,12 +39,30 @@
         if(sec<=9){
             sec = '0' + sec
         }
+        console.log("timeTaken " + timeTaken) 
+        console.log("min " + min) 
+        console.log("sec " + sec) 
         timer.innerHTML = ` ${min} : ${sec}`
     }
+    document.getElementById("helpicon-toggle").addEventListener('click',function (){
+        isGamePause = true;
+        document.getElementById("wrapper").style.opacity = "0.3";
+        document.getElementById("help-info").style.display = "flex";
+        document.getElementById("helpicon-toggle").style.display = "none";
+    })
+    document.getElementById("help-info-close-icon").addEventListener('click',function (){
+        isGamePause = false;
+        document.getElementById("wrapper").style.opacity = "1";
+        document.getElementById("help-info").style.display = "none";
+        document.getElementById("helpicon-toggle").style.display = "grid";
+        document.getElementById("help-info").style.display = "none";
+    })
+    
     startGame.addEventListener('click',function() {
         setInterval(incrementSeconds, 1000);
         document.querySelector('.startPopUp').style.display = "none";
-        document.getElementById("mineSweeper").style.display = "flex";
+        document.getElementById("wrapper").style.display = "block";
+        document.getElementById("helpicon-toggle").style.display = "grid";
         difficultyLevel.value = difficultyLevelOnPopup.value;
         console.log(difficultyLevelOnPopup.value)
         if(difficultyLevelOnPopup.value === "Easy"){
@@ -226,7 +245,7 @@
         if(!flagBlock.classList.contains('checked') && flags < (gameLevel*gameLevel) * 0.2){
             if(!flagBlock.classList.contains('flag')) {
                 flagBlock.classList.add('flag')
-                flagBlock.innerHTML = "⛳"
+                flagBlock.innerHTML = "🚩"
                 flags++;
                 checkForWin()
             } else {
