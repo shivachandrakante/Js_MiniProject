@@ -137,9 +137,9 @@
             singleBlock.classList.add(gridArrray[i])
             singleBlock.style.width = `${size}px` 
             singleBlock.style.height = `${size}px` 
-            if(gridArrray[i]  === "bomb" ){
+            /*if(gridArrray[i]  === "bomb" ){
                 singleBlock.style.backgroundColor = "orange";
-            } 
+            } */
             mineSweeperBoard.appendChild(singleBlock);
             gridboard.push(singleBlock);
             singleBlock.addEventListener('click',function (){
@@ -310,7 +310,7 @@
             outPutMessage.innerHTML = `Hurray, You Won :-) 
                                     You Took ${gameoverAt}`;
         } else{
-            outPutMessage.innerHTML = `, Better luck next Time 🤞 
+            outPutMessage.innerHTML = `You Lost, Better luck next Time 🤞 
                                         You Took ${gameoverAt}`;
         }
     }
