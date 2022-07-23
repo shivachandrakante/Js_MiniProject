@@ -21,7 +21,7 @@ In this Module I have used inbuilt methods such as:
 - appendChild()
 - push()
 - Array()
-- async funtions
+- async functions
 
 ---
 
