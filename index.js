@@ -14,6 +14,7 @@
     const mineSweeperBoard = document.getElementById("mineSweeperBoard")
     const outPutMessage = document.getElementById("outPutMessage")
     const playAgain = document.getElementById("playAgain")
+    const FlagsLeft = document.getElementById("FlagsLeft")
     let gridboard = []
     let isGameOver = false;
     let gameLevel;
@@ -68,14 +69,20 @@
         if(difficultyLevelOnPopup.value === "Easy"){
             flags = 0
             gameLevel = 10
+            let totalFlags = (gameLevel*gameLevel) * 0.2 - flags;
+            FlagsLeft.innerHTML = `🚩 Left: ${totalFlags}`;
             formBoard(10)
         } else if(difficultyLevelOnPopup.value === "Medium" ){
             flags = 0
             gameLevel = 15
+            let totalFlags = (gameLevel*gameLevel) * 0.2 - flags;
+            FlagsLeft.innerHTML = `🚩 Left: ${totalFlags}`;
             formBoard(15)
         } else{
             flags = 0
             gameLevel = 20
+            let totalFlags = (gameLevel*gameLevel) * 0.2 - flags;
+            FlagsLeft.innerHTML = `🚩 Left: ${totalFlags}`;
             formBoard(20)
         }
         
@@ -242,16 +249,21 @@
     }
     function addFlag(flagBlock) {
         if(isGameOver) return;
-        if(!flagBlock.classList.contains('checked') && flags < (gameLevel*gameLevel) * 0.2){
-            if(!flagBlock.classList.contains('flag')) {
+        if(!flagBlock.classList.contains('checked')  ){
+            if(!flagBlock.classList.contains('flag') && flags < (gameLevel*gameLevel) * 0.2) {
                 flagBlock.classList.add('flag')
                 flagBlock.innerHTML = "🚩"
                 flags++;
+                let totalFlags = (gameLevel*gameLevel) * 0.2 - flags;
+                FlagsLeft.innerHTML = `🚩 Left: ${totalFlags}`;
                 checkForWin()
-            } else {
+            } else if(flagBlock.classList.contains('flag')){
                 flagBlock.classList.remove('flag')
                 flagBlock.innerHTML = ""
                 flags--;
+                let totalFlags = (gameLevel*gameLevel) * 0.2 - flags;
+                FlagsLeft.innerHTML = `🚩 Left: ${totalFlags}`;
+
             }
         }
     }

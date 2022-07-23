@@ -111,7 +111,7 @@ ul {
     justify-content: space-evenly;
 }
 #timer{
-    width: 50%; 
+    flex-grow: 1;
     background-color: #00b4d8;
     text-align: center;
     margin: 5px;
@@ -120,13 +120,21 @@ ul {
 }
 
 #difficulty-Level{
-    width: 50%;
+    flex-grow: 1;
     height: auto; 
     text-align: center;
     margin: 5px;
     padding: 5px;
     font-size: 25px;
     background-color: #e76f51;
+    color: whitesmoke;
+}
+#FlagsLeft{
+    flex-grow: 1;
+    background-color: #f07167;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
     color: whitesmoke;
 }
 
