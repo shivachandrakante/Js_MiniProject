@@ -310,7 +310,7 @@
             outPutMessage.innerHTML = `Hurray, You Won :-) 
                                     You Took ${gameoverAt}`;
         } else{
-            outPutMessage.innerHTML = `You Lost, Better luck next Time 🤞 
+            outPutMessage.innerHTML = `You Lost, Better luck next Time. 🤞 
                                         You Took ${gameoverAt}`;
         }
     }
